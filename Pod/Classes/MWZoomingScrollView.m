@@ -231,12 +231,11 @@
         CGFloat imageAR = imageSize.width / imageSize.height;
         CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
         CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
-        // Zooms standard portrait images on a 3.5in screen but not on a 4in screen.
-        if (ABS(boundsAR - imageAR) < 0.17) {
-            zoomScale = MAX(xScale, yScale);
-            // Ensure we don't zoom in or out too far, just in case
-            zoomScale = MIN(MAX(self.minimumZoomScale, zoomScale), self.maximumZoomScale);
-        }
+        
+        // init all pictures with zoom
+        zoomScale = MAX(xScale, yScale);
+        // Ensure we don't zoom in or out too far, just in case
+        zoomScale = MIN(MAX(self.minimumZoomScale, zoomScale), self.maximumZoomScale);
     }
     return zoomScale;
 }
